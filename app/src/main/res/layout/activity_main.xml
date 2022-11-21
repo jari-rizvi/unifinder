@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:card_view="http://schemas.android.com/tools"
+            android:id="@+id/spCardView"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+            app:cardCornerRadius="15dp"
+            card_view:cardCornerRadius="2dp"
+            card_view:contentPaddingLeft="50dp"
+            card_view:contentPaddingTop="20dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/spImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:src="@drawable/selectpass" />
+
+                <TextView
+                    android:id="@+id/spText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/spImage"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:text="SELECT PASSENGER"
+                    android:textColor="@color/orange"
+                    android:textSize="25dp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/orText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spCardView"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_vertical"
+            android:padding="50dp"
+            android:text="OR"
+            android:textColor="#feb808"
+            android:textSize="25dp" />
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:card_view="http://schemas.android.com/tools"
+            android:id="@+id/rpCardView"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_below="@id/orText"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="20dp"
+            app:cardCornerRadius="15dp"
+            card_view:cardCornerRadius="2dp"
+            card_view:contentPaddingLeft="50dp"
+            card_view:contentPaddingTop="20dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/rpImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:src="@drawable/registerpass" />
+
+                <TextView
+                    android:id="@+id/rpText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rpImage"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:text="REGISTER  PASSENGER"
+                    android:textColor="@color/orange"
+                    android:textSize="25dp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+
+</RelativeLayout>

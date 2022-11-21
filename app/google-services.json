@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "654288609665",
+    "project_id": "driverapp-9e904",
+    "storage_bucket": "driverapp-9e904.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654288609665:android:68f166b048ea5c04e34880",
+        "android_client_info": {
+          "package_name": "com.example.unifinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654288609665-p1rh3hu9hmtjk8berft81cds7or1i0s3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.unifinder",
+            "certificate_hash": "5a773b5abcd495d9a42fd90823179ced025d6b37"
+          }
+        },
+        {
+          "client_id": "654288609665-0mgtq7toeb8mn7p81la5al2goe21rpsh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCcUaYTrwEc7GQWpXKt1IoSQBLfAEJTXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654288609665-0mgtq7toeb8mn7p81la5al2goe21rpsh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

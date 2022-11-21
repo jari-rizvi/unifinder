@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Jari's Projects/unifinder/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_auth_screen.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_coming_soon_screen.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_current_bookings_screen.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_drawer_passenger_screen.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_login_screen.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_main.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_main_sidemenu.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_maps.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_route_available_screen.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_see_all_queries_booking_screen.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_splash_screen.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/fragment_dash_board.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/item_drawer_passenger.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/route_details_list_layout.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/side_menu.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/menu/menu.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/menu/navigation.xml" value="0.175" />
+        <entry key="..\:/My Project/Android/Transport User/app/src/main/res/menu/sidemenu.xml" value="0.175" />
+        <entry key="..\:/java project/pak--driver-customer-app-add_screen/app/src/main/res/drawable-v24/text_field_background.xml" value="0.271" />
+        <entry key="..\:/java project/pak--driver-customer-app-add_screen/app/src/main/res/layout/activity_auth_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/java project/pak--driver-customer-app-add_screen/app/src/main/res/layout/activity_login_screen.xml" value="0.22" />
+        <entry key="..\:/java project/pak--driver-customer-app-add_screen/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/java project/pak--driver-customer-app-add_screen/app/src/main/res/layout/activity_route_available_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/java project/pak--driver-customer-app-add_screen/app/src/main/res/layout/activity_see_all_queries_booking_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/java project/pak--driver-customer-app-add_screen/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
+        <entry key="..\:/java project/pak--driver-customer-app-add_screen/app/src/main/res/layout/activity_vc.xml" value="0.36666666666666664" />
+        <entry key="..\:/java project/pak--driver-customer-app-add_screen/app/src/main/res/layout/activity_verify_email.xml" value="0.36666666666666664" />
+        <entry key="..\:/riddhi/PAKDRIVER/PakDriverApp/app/src/main/res/layout/activity_current_bookings_screen.xml" value="0.1" />
+        <entry key="..\:/riddhi/PAKDRIVER/PakDriverApp/app/src/main/res/layout/activity_maps.xml" value="0.1" />
+        <entry key="..\:/riddhi/PAKDRIVER/PakDriverApp/app/src/main/res/layout/activity_see_all_queries_booking_screen.xml" value="0.17192982456140352" />
+        <entry key="..\:/riddhi/PAKDRIVER/PakDriverApp/app/src/main/res/layout/all_queries_booking_layout.xml" value="0.17192982456140352" />
+        <entry key="..\:/riddhi/PAKDRIVER/PakDriverApp/app/src/main/res/layout/booking_detail_layout.xml" value="0.17192982456140352" />
+        <entry key="..\:/riddhi/PAKDRIVER/PakDriverApp/app/src/main/res/layout/side_menu.xml" value="0.1" />
+        <entry key="..\:/riddhi/PAKDRIVER/PakDriverApp/app/src/main/res/menu/menu.xml" value="0.17192982456140352" />
+        <entry key="..\:/riddhi/PAKDRIVER/PakDriverApp/app/src/main/res/menu/navigation.xml" value="0.17192982456140352" />
+        <entry key="..\:/riddhi/PAKDRIVER/PakDriverApp/app/src/main/res/menu/sidemenu.xml" value="0.17192982456140352" />
+        <entry key="app/src/main/res/layout/activity_current_bookings_screen.xml" value="0.2671875" />
+        <entry key="app/src/main/res/layout/activity_home_option.xml" value="0.2630769230769231" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/activity_main_sidemenu.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/activity_payment_history_screen.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/activity_payment_method_screen.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/activity_route_available_screen.xml" value="0.2671875" />
+        <entry key="app/src/main/res/layout/activity_see_all_queries_booking_screen.xml" value="0.2671875" />
+        <entry key="app/src/main/res/layout/activity_select_passenger_screen.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/all_queries_booking_layout.xml" value="0.2671875" />
+        <entry key="app/src/main/res/layout/booking_detail_layout.xml" value="0.2671875" />
+        <entry key="app/src/main/res/layout/bottom_sheet_layout.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/complains_layout.xml" value="0.2671875" />
+        <entry key="app/src/main/res/layout/fragment_dash_board.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/payment_history_layout.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/route_details_list_layout.xml" value="0.253125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

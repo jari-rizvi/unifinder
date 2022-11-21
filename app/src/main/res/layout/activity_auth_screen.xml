@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterPassenger.AuthScreen">
+
+    <RelativeLayout
+        android:id="@+id/relativAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <TextView
+            android:id="@+id/stAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Start by Creating \n an Account"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/stAccount"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Safe, Easy &amp; Reliable"
+            android:textColor="@color/gray"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/caCardView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="50dp"
+        app:cardCornerRadius="15dp">
+
+        <RelativeLayout
+            android:background="@drawable/gradient_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/caText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:text="Create an Account"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:card_view="http://schemas.android.com/tools"
+        android:id="@+id/signinCardView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/caCardView"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/gray"
+        app:cardCornerRadius="15dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:contentPaddingLeft="50dp">
+
+
+        <TextView
+            android:id="@+id/signInText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rpImage"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:text="Sign in"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

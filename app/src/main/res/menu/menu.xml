@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/home_fragment"
+            android:checkable="true"
+            android:icon="@drawable/home"
+            android:iconTint="@color/colorPrimary"
+            android:title="Home" />
+        <item
+            android:id="@+id/passenger"
+            android:icon="@drawable/passenger"
+            android:iconTint="@color/colorPrimary"
+            android:title="Passenger" />
+        <item
+            android:id="@+id/booking"
+            android:icon="@drawable/booking"
+            android:iconTint="@color/colorPrimary"
+            android:title="Booking" />
+        <item
+            android:id="@+id/payment"
+            android:icon="@drawable/payment"
+            android:iconTint="@color/colorPrimary"
+            android:title="PayMents" />
+
+<!--        <item-->
+<!--            android:id="@+id/tracking"-->
+<!--            android:icon="@drawable/passenger"-->
+<!--            android:iconTint="@color/colorPrimary"-->
+<!--            android:title="Tracking" />-->
+
+        <item
+            android:id="@+id/complains"
+            android:icon="@drawable/complain"
+            android:iconTint="@color/colorPrimary"
+            android:title="Complains" />
+
+        <item
+            android:id="@+id/userProfile"
+            android:icon="@drawable/passenger"
+            android:iconTint="@color/colorPrimary"
+            android:title="Profile" />
+
+<!--        <item-->
+<!--            android:id="@+id/opNotification"-->
+<!--            android:icon="@drawable/notifcations"-->
+<!--            android:title="Notification" />-->
+<!--        <item-->
+<!--            android:id="@+id/opSetting"-->
+<!--            android:icon="@drawable/settings"-->
+<!--            android:title="Setting" />-->
+
+
+    </group>
+
+</menu>
