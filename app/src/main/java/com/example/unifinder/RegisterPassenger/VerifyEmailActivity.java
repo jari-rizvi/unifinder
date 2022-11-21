@@ -11,7 +11,7 @@ import com.example.unifinder.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class VerifyEmailActivity extends AppCompatActivity {
-    
+
     TextView btnLogin;
 
 

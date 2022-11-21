@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Jari's Projects/unifinder/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Jari's Projects/unifinder/app/src/main/res/layout/activity_login_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Jari's Projects/unifinder/app/src/main/res/layout/activity_signup.xml" value="0.33" />
+        <entry key="..\:/Jari's Projects/unifinder/app/src/main/res/layout/activity_verify_email.xml" value="0.36666666666666664" />
         <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_auth_screen.xml" value="0.175" />
         <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_coming_soon_screen.xml" value="0.175" />
         <entry key="..\:/My Project/Android/Transport User/app/src/main/res/layout/activity_current_bookings_screen.xml" value="0.175" />

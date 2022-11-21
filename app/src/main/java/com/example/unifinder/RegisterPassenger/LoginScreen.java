@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.unifinder.API.ApiClient;
@@ -35,10 +36,7 @@ import retrofit2.Response;
 public class LoginScreen extends AppCompatActivity {
 
     ImageView btnBack;
-    TextInputEditText edtMobileNo;
-    EditText edtPass;
-    CardView signInCardView;
-    CheckBox checkBox;
+    TextView btnRegister;
     KProgressHUD hud;
     ApiInterface apiService;
     SharedPreferences prefUserData;
@@ -57,7 +55,16 @@ public class LoginScreen extends AppCompatActivity {
                 .setAnimationSpeed(2)
                 .setBackgroundColor(R.color.black)
                 .setDimAmount(0.5f);
-//        findViews();
+        findViews();
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SignupActivity.class);
+                startActivity(i);
+            }
+        });
+
 //
 //
 //        edtMobileNo.setText("0");
@@ -117,15 +124,9 @@ public class LoginScreen extends AppCompatActivity {
 
     }
 
-//    private void findViews() {
-//        prefUserData = getSharedPreferences("USER_DATA", MODE_PRIVATE);
-//        editorUserData = prefUserData.edit();
-//        edtMobileNo = findViewById(R.id.edtMobileNumber);
-//        edtPass = findViewById(R.id.edtLoginPass);
-//        checkBox = findViewById(R.id.checkBox);
-//        signInCardView = findViewById(R.id.signInCardView);
-//        btnBack = findViewById(R.id.btnBack);
-//    }
+    private void findViews() {
+        btnRegister = findViewById(R.id.btnSignup);
+    }
 //
 //    private boolean Validate() {
 //        if (edtMobileNo.getText().toString().trim().isEmpty()) {
