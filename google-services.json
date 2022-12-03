@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "257216872709",
+    "project_id": "logindemo-dc4c7",
+    "storage_bucket": "logindemo-dc4c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257216872709:android:bbbc3076287ab508bfb76c",
+        "android_client_info": {
+          "package_name": "com.example.unifinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257216872709-kosbpf09b8sooag44acp55rncq9fv4rr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.unifinder",
+            "certificate_hash": "2a5f6efc4a9804643e2eeb379185dd2884b3bbba"
+          }
+        },
+        {
+          "client_id": "257216872709-vtb86uvohpmc0vaa4sbb7l9c8glodu8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCokqspRX82i7iaY3Itjw_6LEFutyCV9Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257216872709-vtb86uvohpmc0vaa4sbb7l9c8glodu8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
