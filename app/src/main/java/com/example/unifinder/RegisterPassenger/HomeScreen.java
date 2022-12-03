@@ -1,22 +1,16 @@
 package com.example.unifinder.RegisterPassenger;
 
-import static android.content.ContentValues.TAG;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.unifinder.MainActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.unifinder.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,10 +19,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
-public class LoginScreen extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity {
 
     ImageView btnBack;
-    TextView btnRegisterr;
+    TextView btnRegister;
     TextView btnLogin;
     EditText email, password;
     String email_pattern = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$";
@@ -56,13 +50,13 @@ public class LoginScreen extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
-        btnRegisterr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivity(i);
-            }
-        });
+//        btnRegister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(), SignupActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +133,6 @@ public class LoginScreen extends AppCompatActivity {
 
     private void findViews() {
         btnLogin = findViewById(R.id.btnLogin);
-        btnRegisterr = findViewById(R.id.btnSignup);
         email = findViewById(R.id.userEmail);
         password = findViewById(R.id.userPassword);
 
@@ -161,10 +154,10 @@ public class LoginScreen extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(),"Successfully Login",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(getApplicationContext(),"Something Went Wrong ",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Hello ",Toast.LENGTH_SHORT).show();
 
 
                     }

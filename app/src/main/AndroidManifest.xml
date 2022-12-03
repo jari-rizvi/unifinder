@@ -21,6 +21,10 @@
         <activity
             android:name=".RegisterPassenger.LoginScreen"
             android:exported="false" />
+
+        <activity
+            android:name=".RegisterPassenger.HomeScreen"
+            android:exported="false" />
         <activity
             android:name=".RegisterPassenger.VerifyEmailActivity"
             android:exported="true">

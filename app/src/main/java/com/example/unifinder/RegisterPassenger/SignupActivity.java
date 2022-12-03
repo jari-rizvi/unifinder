@@ -63,18 +63,19 @@ public class SignupActivity extends AppCompatActivity {
         } else if (userpass.isEmpty()) {
             password.setError("Please enter valid Pass");
         } else {
-            mAuth.createUserWithEmailAndPassword("jforjari@gmail.com","jari").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.createUserWithEmailAndPassword(usermail,userpass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        Toast.makeText(getApplicationContext(),"Succesfully Register ",Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), HomeScreen.class);
                         startActivity(i);
 
 
                     }
                     else{
-                        Intent i = new Intent(getApplicationContext(), VerifyEmailActivity.class);
-                        startActivity(i);
+                        Toast.makeText(getApplicationContext(),"Something wenrt wrong ",Toast.LENGTH_SHORT).show();
+
                     }
                 }
             });
