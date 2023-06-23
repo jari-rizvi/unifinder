@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -71,7 +72,6 @@ public class SignupActivity extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), HomeScreen.class);
                         startActivity(i);
 
-
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"Something wenrt wrong ",Toast.LENGTH_SHORT).show();
@@ -79,6 +79,15 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 }
             });
+        }
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+//            reload();
         }
     }
 

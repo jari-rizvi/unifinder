@@ -101,7 +101,10 @@ public class LoginScreen extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
+
                         Toast.makeText(getApplicationContext(),"Successfully Login",Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), HomeScreen.class);
+                        startActivity(i);
 
                     } else {
                         Toast.makeText(getApplicationContext(),"Something Went Wrong ",Toast.LENGTH_SHORT).show();
