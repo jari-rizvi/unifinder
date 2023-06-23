@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintVertical_bias="0.06"
             android:textColor="@color/black"
-            android:text="Welcome to Uni Finder!"
+            android:text="Welcome to Safe Zone Security!"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -186,6 +186,7 @@
             app:layout_constraintVertical_bias="0.09"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
