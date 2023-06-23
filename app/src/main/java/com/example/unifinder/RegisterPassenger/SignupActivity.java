@@ -64,21 +64,28 @@ public class SignupActivity extends AppCompatActivity {
         } else if (userpass.isEmpty()) {
             password.setError("Please enter valid Pass");
         } else {
-            mAuth.createUserWithEmailAndPassword(usermail,userpass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(),"Succesfully Register ",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(getApplicationContext(), HomeScreen.class);
-                        startActivity(i);
+            mAuth.createUserWithEmailAndPassword(usermail, usermail)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Log.d("TAG", "createUserWithEmail:success");
+                                Intent i = new Intent(getApplicationContext(), HomeScreen.class);
+                                startActivity(i);
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Log.d("TAG", user.getEmail().toString());
 
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(),"Something wenrt wrong ",Toast.LENGTH_SHORT).show();
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w("TAG", "createUserWithEmail:failure", task.getException());
+                                Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
 
-                    }
-                }
-            });
+                            }
+                        }
+                    });
+
+
         }
     }
     @Override
