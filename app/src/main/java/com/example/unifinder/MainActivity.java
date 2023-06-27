@@ -2,6 +2,7 @@ package com.example.unifinder;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -12,7 +13,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.unifinder.Modal.searchRides.Area;
-import com.example.unifinder.RegisterPassenger.LoginScreen;
 
 public class MainActivity extends AppCompatActivity {
     CardView spCardView, rpCardView;

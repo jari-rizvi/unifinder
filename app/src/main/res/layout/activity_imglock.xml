@@ -5,8 +5,7 @@
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
-    android:paddingBottom="16dp"
-    tools:context=".RegisterPassenger.ImageLock">
+    android:paddingBottom="16dp">
 
     <ImageView
 
@@ -128,7 +127,7 @@
             android:layout_weight="1"
 
             android:scaleType="fitCenter"
-            android:text="Select" />
+            android:text="Browse" />
 
         <Button
             android:id="@+id/btn2"
@@ -136,7 +135,7 @@
             android:layout_height="65dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:text="Reset" />
+            android:text="Completed" />
 
 
     </LinearLayout>

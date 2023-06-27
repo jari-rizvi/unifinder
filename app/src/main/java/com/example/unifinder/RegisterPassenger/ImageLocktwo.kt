@@ -1,8 +1,10 @@
 package com.example.unifinder.RegisterPassenger
 
+
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -15,105 +17,77 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.unifinder.R
-import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
-import java.io.File
 
-class ImageLock : AppCompatActivity(), View.OnClickListener {
+
+class ImageLocktwo : AppCompatActivity(), View.OnClickListener {
     var dividedImages = mutableListOf<Bitmap>()
     val dividedImages2 = mutableListOf<Bitmap>()
     val shuffled = mutableListOf<Bitmap>()
-    var uid: String = ""
-    var email: String = ""
-    var displayName: String = ""
-    var img: String = ""
-    var userRef: DatabaseReference? = null
+    var userData: User? = null
+    var uid: String? = null
 
-    fun addImageOnline(userRef: DatabaseReference, urlImg: String) {
-
-        userRef.child("email").setValue(email)
-        userRef.child("name").setValue(displayName)
-        userRef.child("img").setValue("$urlImg")
-        Log.d("123123", "Validate:$email ")
-        Log.d("123123", "Validate:$displayName ")
-        Log.d("123123", "Validate:$uid ")
-        Log.d("123123", "Validate:$userRef ")
-        userRef.addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                startActivity(Intent(this@ImageLock, HomeScreen::class.java))
+    fun addImageOnline(userRef: DatabaseReference) {
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Access the user data from the snapshot
+                    userData = dataSnapshot.getValue(User::class.java)
+                    // Handle the retrieved user data
+                    if (userData != null) {
+                        val userEmail = userData?.email
+                        val name = userData?.name
+                        val img = userData?.img
+                        Log.d("123123", "onDataChange: $userEmail")
+                        Log.d("123123", "onDataChange: $name")
+                        Log.d("123123", "onDataChange: $img ")
+                        // Access other user data fields as needed
+                        selectedFun(userData!!.img)
+                    }
+                } else {
+                    // User data does not exist
+                }
             }
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle the error case
             }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-
         })
-        /*  userRef.addListenerForSingleValueEvent(object : ValueEventListener {
-              override fun onDataChange(dataSnapshot: DataSnapshot) {
-                  if (dataSnapshot.exists()) {
-                      // Access the user data from the snapshot
-                      val userData = dataSnapshot.getValue(User::class.java)
-                      // Handle the retrieved user data
-                      if (userData != null) {
-                          val userEmail = userData.email
-                          val name = userData.name
-                          val img = userData.img
-                          Log.d("123123", "onDataChange: $userEmail")
-                          Log.d("123123", "onDataChange: $name")
-                          Log.d("123123", "onDataChange: $img ")
-                          // Access other user data fields as needed
-                      }
-                  } else {
-                      // User data does not exist
-                  }
-              }
-
-              override fun onCancelled(databaseError: DatabaseError) {
-                  // Handle the error case
-              }
-          })*/
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_imglock)
+        setContentView(com.example.unifinder.R.layout.activity_imglock)
 
 
         val database = FirebaseDatabase.getInstance()
         val usersRef = database.getReference("users")
+        uid = intent.getStringExtra("uid")
+        val userRef = usersRef.child(uid!!)
+        addImageOnline(userRef)
 
-        userRef = usersRef.child(intent.getStringExtra("uid")!!)
-
-        uid = intent.getStringExtra("uid")!!
-        email = intent.getStringExtra("email")!!
-        displayName = intent.getStringExtra("displayName")!!
-        img = intent.getStringExtra("img")!!
 //        showImage(originalImage)
-        findViewById<Button>(R.id.btn1).setOnClickListener {
+        findViewById<Button>(R.id.btn1).visibility = View.GONE/*   findViewById<Button>(R.id.btn1).setOnClickListener {
+                   dividedImages.clear()
+                   shuffled.clear()
+                   dividedImages2.clear()
+                   selectFun()
+               }*/
+        findViewById<Button>(R.id.btn2).setOnClickListener {
+//            shuffledImages()
             dividedImages.clear()
             shuffled.clear()
             dividedImages2.clear()
-            selectFun()
-        }
-        findViewById<Button>(R.id.btn2).setOnClickListener {
-            shuffledImages()
+
         }
 
 
@@ -128,45 +102,21 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
         showDividedImages(shuffled)
     }
 
-    private fun showImage(image: Bitmap) {
+    private fun showImage(image: String) {
+        val imageView: ImageView = findViewById(R.id.imageView)
+//        imageView.setImageBitmap(image)
 
-        val storage = FirebaseStorage.getInstance()
+        Picasso.with(this).load(image).into(imageView)
+        GlobalScope.launch(Dispatchers.Main) {
+            delay(2000)
+            val bm: Bitmap? = (imageView.drawable as BitmapDrawable?)?.bitmap
+            dividedImages.addAll(
+                divideImageIntoParts(bm!!)
+            )
 
-
-        val storageRef = storage.reference
-
-        val imageRef = storageRef.child("images/$uid.jpg")
-        val baos = ByteArrayOutputStream()
-        image.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val imageBytes = baos.toByteArray()
-
-
-        val uploadTask = imageRef.putBytes(imageBytes)
-        uploadTask.addOnSuccessListener { taskSnapshot ->
-            // Image uploaded successfully
-            // Retrieve the download URL if needed
-            if (taskSnapshot.task.isComplete) {
-                val downloadUrl = taskSnapshot.metadata?.reference?.downloadUrl
-                downloadUrl!!.addOnCompleteListener {
-                    addImageOnline(userRef!!, it.result!!.toString())
-                }
-
-            }
-        }.addOnFailureListener { exception ->
-            // Image upload failed
-            // Handle the failure and display an error message
+            shuffledImages()
         }
 
-
-        val imageView: ImageView = findViewById(R.id.imageView)
-        imageView.setImageBitmap(image)
-
-
-//        dividedImages.addAll(
-//            divideImageIntoParts(image)
-//        )
-//
-//        shuffledImages()
 
     }
 
@@ -192,7 +142,7 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
             imageViews[i].setImageBitmap(images[i])
             imageViews[i].setOnClickListener(this)
             imageViews[i].background =
-                ContextCompat.getDrawable(this@ImageLock, android.R.color.transparent)
+                ContextCompat.getDrawable(this@ImageLocktwo, android.R.color.transparent)
         }
     }
 
@@ -226,40 +176,48 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
                 index = 1 - 1
 
             }
+
             R.id.imageView2 -> {
                 index = 2 - 1
 
             }
+
             R.id.imageView3 -> {
                 index = 3 - 1
 
             }
+
             R.id.imageView4 -> {
                 index = 4 - 1
 
             }
+
             R.id.imageView5 -> {
                 index = 5 - 1
 
             }
+
             R.id.imageView6 -> {
                 index = 6 - 1
 
             }
+
             R.id.imageView7 -> {
                 index = 7 - 1
 
             }
+
             R.id.imageView8 -> {
                 index = 8 - 1
 
             }
+
             R.id.imageView9 -> {
                 index = 9 - 1
 
             }
         }
-        Toast.makeText(this, "$index", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "$index", Toast.LENGTH_SHORT).show()
         if (shuffled.get(index).equals(dividedImages.get(counter))) {
 
 
@@ -275,12 +233,16 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
             GlobalScope.launch(Dispatchers.Main) {
                 delay(500)
                 v?.background =
-                    ContextCompat.getDrawable(this@ImageLock, android.R.color.transparent)
+                    ContextCompat.getDrawable(this@ImageLocktwo, android.R.color.transparent)
 
             }
         }
         if (dividedImages2.size == shuffled.size) {
-            Toast.makeText(this, "GameWon", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "GameWon", Toast.LENGTH_SHORT).show()
+
+            startActivity(Intent(this, HomeScreen::class.java).apply {
+                putExtra("uid", uid)
+            })
         }
 
         Log.d("TAG", "onClick:123123 ${dividedImages2.size}")
@@ -291,6 +253,15 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
         changeImage.launch(pickImg)
     }
 
+    fun selectedFun(uri: String) {
+        Log.d("123123", "selectedFun: $uri")
+//        val imageView: ImageView = findViewById(R.id.imageView)
+//        imageView.setImageBitmap(image)
+
+//        val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, Uri.parse(uri))
+        showImage(uri)
+    }
+
     private val changeImage = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
@@ -298,7 +269,8 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
             val data = it.data
             val imgUri = data?.data
             val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imgUri)
-            showImage(bitmap)
+
+            //            showImage(bitmap)
         }
     }
 

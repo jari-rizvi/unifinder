@@ -38,15 +38,10 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        String uid = getIntent().getStringExtra("uid");
+        Toast.makeText(this, "" + uid, Toast.LENGTH_SHORT).show();
 
-        hud = KProgressHUD.create(this)
-                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                .setCancellable(false)
-                .setAnimationSpeed(2)
-                .setBackgroundColor(R.color.black)
-                .setDimAmount(0.5f);
-
-
+        hud = KProgressHUD.create(this).setStyle(KProgressHUD.Style.SPIN_INDETERMINATE).setCancellable(false).setAnimationSpeed(2).setBackgroundColor(R.color.black).setDimAmount(0.5f);
 
 
     }
