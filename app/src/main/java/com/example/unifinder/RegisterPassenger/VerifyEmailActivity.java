@@ -1,5 +1,6 @@
 package com.example.unifinder.RegisterPassenger;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -12,7 +13,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +26,8 @@ import android.widget.Toast;
 import com.example.unifinder.MainActivity;
 import com.example.unifinder.R;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class VerifyEmailActivity extends AppCompatActivity {
 
@@ -89,12 +95,40 @@ public class VerifyEmailActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public void buttonOpenFile(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, MediaStore.Downloads.EXTERNAL_CONTENT_URI);
+//        intent.setType("application/pdf");
+        intent.setType("*/*");
+        this.startActivity(intent);
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public void buttonCreateFile(View view) {
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT, MediaStore.Downloads.EXTERNAL_CONTENT_URI);
+//        intent.setType("application/pdf");
+        intent.setType("*/*");
+        this.startActivity(intent);
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_email);
         findViews();
+
+
+
+
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE},
+                PackageManager.PERMISSION_GRANTED);
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
