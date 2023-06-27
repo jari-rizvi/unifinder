@@ -8,22 +8,45 @@
     android:layout_height="match_parent"
     tools:context=".RegisterPassenger.LoginScreen">
 
+    <RelativeLayout
+        android:id="@+id/relativAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <TextView
+            android:id="@+id/stAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Home"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginHorizontal="60dp"
-        android:background="@drawable/text_field_background"
+        android:background="@drawable/card_background"
         android:backgroundTint="@color/black"
+        android:elevation="1dp"
         android:gravity="center"
-        android:text="Upload"
+        android:text="Upload PDF"
         android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -31,16 +54,19 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginHorizontal="60dp"
-        android:background="@drawable/text_field_background"
+        android:background="@drawable/card_background"
         android:backgroundTint="@color/black"
+        android:elevation="1dp"
         android:gravity="center"
-        android:text="Retrive"
+        android:text="Retrive PDF"
         android:textColor="@color/white"
+        android:textSize="17sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintVertical_bias="0.2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -88,7 +88,6 @@ public class GetPdf extends AppCompatActivity {
     private void findViews() {
         btnLogin = findViewById(R.id.btnLogin);
         btnGet = findViewById(R.id.btnGet);
-
     }
 
 
