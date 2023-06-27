@@ -28,7 +28,6 @@
             android:name=".RegisterPassenger.ImageLock"
             android:exported="false" />
 
-
         <activity
             android:name=".RegisterPassenger.GetPdf"
             android:exported="true">
@@ -39,6 +38,14 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:name=".RegisterPassenger.PdfList"
+            android:exported="false">
+
+
+        </activity>
+
 
         <activity
             android:name=".RegisterPassenger.HomeScreen"
