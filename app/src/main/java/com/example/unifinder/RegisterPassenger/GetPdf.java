@@ -35,6 +35,7 @@ public class GetPdf extends AppCompatActivity {
 
 
     TextView btnLogin;
+    TextView btnGet;
     ImageView upload;
     Uri imageuri = null;
 
@@ -72,12 +73,21 @@ public class GetPdf extends AppCompatActivity {
             }
         });
 
+        btnGet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), PdfList.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 
 
     private void findViews() {
         btnLogin = findViewById(R.id.btnLogin);
+        btnGet = findViewById(R.id.btnGet);
 
     }
 
@@ -101,7 +111,7 @@ public class GetPdf extends AppCompatActivity {
             Toast.makeText(GetPdf.this, imageuri.toString(), Toast.LENGTH_SHORT).show();
 
             // Here we are uploading the pdf in firebase storage with the name of current time
-            final StorageReference filepath = storageReference.child(messagePushID + "." + "pdf");
+            final StorageReference filepath = storageReference.child(messagePushID + "." + "uploadPdf");
             Toast.makeText(GetPdf.this, filepath.getName(), Toast.LENGTH_SHORT).show();
             filepath.putFile(imageuri).continueWithTask(new Continuation() {
                 @Override
