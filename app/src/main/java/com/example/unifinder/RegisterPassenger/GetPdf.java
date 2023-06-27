@@ -43,7 +43,7 @@ public class GetPdf extends AppCompatActivity {
     KProgressHUD hud;
     ProgressDialog dialog;
 
-
+    String uid = "";
     private static final int REQUEST_PDF = 1;
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
@@ -56,6 +56,7 @@ public class GetPdf extends AppCompatActivity {
         hud = KProgressHUD.create(this).setStyle(KProgressHUD.Style.SPIN_INDETERMINATE).setCancellable(false).setAnimationSpeed(2).setBackgroundColor(R.color.black).setDimAmount(0.5f);
 
         String email = getIntent().getStringExtra("email");
+        uid = getIntent().getStringExtra("uid");
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +112,7 @@ public class GetPdf extends AppCompatActivity {
             dialog2.setOnDismissListener(dialogInterface -> {
                 if (checker.get()) {
                     Intent i = new Intent(getApplicationContext(), PdfList.class);
+                    i.putExtra("uid", uid);
                     startActivity(i);
                 } else {
                     Log.d("123123", "onClick: ");
@@ -150,7 +152,7 @@ public class GetPdf extends AppCompatActivity {
             Toast.makeText(GetPdf.this, imageuri.toString(), Toast.LENGTH_SHORT).show();
 
             // Here we are uploading the pdf in firebase storage with the name of current time
-            final StorageReference filepath = storageReference.child(messagePushID + "." + "uploadPdf");
+            final StorageReference filepath = storageReference.child(uid + "/" + messagePushID + "." + "pdf");
             Toast.makeText(GetPdf.this, filepath.getName(), Toast.LENGTH_SHORT).show();
             filepath.putFile(imageuri).continueWithTask(new Continuation() {
                 @Override

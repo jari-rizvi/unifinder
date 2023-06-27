@@ -37,6 +37,7 @@
             android:gravity="center"
             android:maxLines="3"
             android:text="View"
+            android:visibility="invisible"
             android:textAlignment="center"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"

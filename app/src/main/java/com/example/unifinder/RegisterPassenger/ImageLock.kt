@@ -83,6 +83,7 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
                 dialog.setOnDismissListener {
                     startActivity(Intent(this@ImageLock, GetPdf::class.java).apply {
                         putExtra("email", email)
+                        putExtra("uid", uid)
                     })
                 }
 

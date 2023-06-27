@@ -53,7 +53,7 @@ public class PdfList extends AppCompatActivity {
     KProgressHUD hud;
     ProgressDialog dialog;
 
-
+    String uid = "";
     TextView view;
     DatabaseReference database;
     List<putPdf> uploadedPdf;
@@ -119,10 +119,11 @@ public class PdfList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_pdff);
+        uid = getIntent().getStringExtra("uid");
         findViews();
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference().child("pdf");
+        StorageReference storageRef = storage.getReference().child("" + uid);
 
         hud = KProgressHUD.create(this).setStyle(KProgressHUD.Style.SPIN_INDETERMINATE).setCancellable(false).setAnimationSpeed(2).setBackgroundColor(R.color.black).setDimAmount(0.5f);
 
@@ -138,7 +139,7 @@ public class PdfList extends AppCompatActivity {
 //                startActivity(intent);
 
 
-                showLongPressDialog(PdfList.this);
+//                showLongPressDialog(PdfList.this);
 
 
             }
@@ -234,7 +235,7 @@ public class PdfList extends AppCompatActivity {
             public void onClick(View v) {
 
                 StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-                StorageReference pdfRef = storageRef.child("pdf");
+                StorageReference pdfRef = storageRef.child("" + uid);
 
                 pdfRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -264,7 +265,6 @@ public class PdfList extends AppCompatActivity {
 
         dialog.show();
     }
-
 
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
