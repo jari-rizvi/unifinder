@@ -29,7 +29,6 @@
 
     </RelativeLayout>
 
-
     <TextView
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
@@ -58,7 +57,7 @@
         android:backgroundTint="@color/black"
         android:elevation="1dp"
         android:gravity="center"
-        android:text="Retrive PDF"
+        android:text="Vault"
         android:textColor="@color/white"
         android:textSize="17sp"
         android:textStyle="bold"

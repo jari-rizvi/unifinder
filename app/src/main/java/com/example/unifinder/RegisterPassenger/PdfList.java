@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -57,8 +58,6 @@ public class PdfList extends AppCompatActivity {
     DatabaseReference database;
     List<putPdf> uploadedPdf;
     String message;
-
-
 
 
     private void findViews() {
@@ -140,8 +139,6 @@ public class PdfList extends AppCompatActivity {
 
 
                 showLongPressDialog(PdfList.this);
-
-
 
 
             }
@@ -267,6 +264,8 @@ public class PdfList extends AppCompatActivity {
 
         dialog.show();
     }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     public void buttonOpenFile(View view) {

@@ -1,28 +1,41 @@
 package com.example.unifinder.RegisterPassenger
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
+import com.example.unifinder.HashObject.hashFunction
+import com.example.unifinder.HashObject.progressDialog
 import com.example.unifinder.R
-import com.google.firebase.database.*
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
-import java.io.File
 
 class ImageLock : AppCompatActivity(), View.OnClickListener {
     var dividedImages = mutableListOf<Bitmap>()
@@ -39,13 +52,41 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
         userRef.child("email").setValue(email)
         userRef.child("name").setValue(displayName)
         userRef.child("img").setValue("$urlImg")
+        userRef.child("hashId").setValue("${hashFunction(email)}")
         Log.d("123123", "Validate:$email ")
         Log.d("123123", "Validate:$displayName ")
         Log.d("123123", "Validate:$uid ")
         Log.d("123123", "Validate:$userRef ")
         userRef.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                startActivity(Intent(this@ImageLock, HomeScreen::class.java))
+                val builder = AlertDialog.Builder(this@ImageLock)
+                val inflater: LayoutInflater = layoutInflater
+                val dialogView = inflater.inflate(R.layout.hash_copy, null)
+                builder.setView(dialogView)
+
+                // Find views within the custom layout
+                val messageTextView = dialogView.findViewById<TextView>(R.id.tv_title_text)
+                val okButton = dialogView.findViewById<Button>(R.id.okBtn)
+                val dialog = builder.create()
+
+                messageTextView.text = "${hashFunction(email)}"
+                okButton.setOnClickListener { v: View? ->
+                    val clipboard: ClipboardManager? =
+                        this@ImageLock.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
+                    val clip = ClipData.newPlainText("io", "${messageTextView.text.toString()}")
+                    clipboard!!.setPrimaryClip(clip)
+                    dialog.dismiss()
+                }
+                dialog.setCancelable(false)
+                dialog.show()
+
+                dialog.setOnDismissListener {
+                    startActivity(Intent(this@ImageLock, GetPdf::class.java).apply {
+                        putExtra("email", email)
+                    })
+                }
+
+
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
@@ -65,30 +106,6 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
             }
 
         })
-        /*  userRef.addListenerForSingleValueEvent(object : ValueEventListener {
-              override fun onDataChange(dataSnapshot: DataSnapshot) {
-                  if (dataSnapshot.exists()) {
-                      // Access the user data from the snapshot
-                      val userData = dataSnapshot.getValue(User::class.java)
-                      // Handle the retrieved user data
-                      if (userData != null) {
-                          val userEmail = userData.email
-                          val name = userData.name
-                          val img = userData.img
-                          Log.d("123123", "onDataChange: $userEmail")
-                          Log.d("123123", "onDataChange: $name")
-                          Log.d("123123", "onDataChange: $img ")
-                          // Access other user data fields as needed
-                      }
-                  } else {
-                      // User data does not exist
-                  }
-              }
-
-              override fun onCancelled(databaseError: DatabaseError) {
-                  // Handle the error case
-              }
-          })*/
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,24 +129,17 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
             dividedImages2.clear()
             selectFun()
         }
-        findViewById<Button>(R.id.btn2).setOnClickListener {
-            shuffledImages()
-        }
+//        findViewById<Button>(R.id.btn2).setOnClickListener {
+//            shuffledImages()
+//        }
 
 
     }
 
-    fun shuffledImages() {
-        shuffled.clear()
-        dividedImages2.clear()
-        shuffled.addAll(
-            dividedImages.shuffled()
-        )
-        showDividedImages(shuffled)
-    }
 
     private fun showImage(image: Bitmap) {
 
+        progressDialog(this@ImageLock, layoutInflater).show()
         val storage = FirebaseStorage.getInstance()
 
 
@@ -148,6 +158,7 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
             if (taskSnapshot.task.isComplete) {
                 val downloadUrl = taskSnapshot.metadata?.reference?.downloadUrl
                 downloadUrl!!.addOnCompleteListener {
+                    progressDialog(this@ImageLock, layoutInflater).dismiss()
                     addImageOnline(userRef!!, it.result!!.toString())
                 }
 
@@ -226,34 +237,42 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
                 index = 1 - 1
 
             }
+
             R.id.imageView2 -> {
                 index = 2 - 1
 
             }
+
             R.id.imageView3 -> {
                 index = 3 - 1
 
             }
+
             R.id.imageView4 -> {
                 index = 4 - 1
 
             }
+
             R.id.imageView5 -> {
                 index = 5 - 1
 
             }
+
             R.id.imageView6 -> {
                 index = 6 - 1
 
             }
+
             R.id.imageView7 -> {
                 index = 7 - 1
 
             }
+
             R.id.imageView8 -> {
                 index = 8 - 1
 
             }
+
             R.id.imageView9 -> {
                 index = 9 - 1
 
@@ -302,4 +321,7 @@ class ImageLock : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+
 }
+
+

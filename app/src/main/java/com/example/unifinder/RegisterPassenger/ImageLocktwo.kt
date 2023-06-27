@@ -2,6 +2,7 @@ package com.example.unifinder.RegisterPassenger
 
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.unifinder.HashObject.progressDialog
 import com.example.unifinder.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -66,7 +68,7 @@ class ImageLocktwo : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.example.unifinder.R.layout.activity_imglock)
+        setContentView(com.example.unifinder.R.layout.activity_imglocktwo)
 
 
         val database = FirebaseDatabase.getInstance()
@@ -76,12 +78,7 @@ class ImageLocktwo : AppCompatActivity(), View.OnClickListener {
         addImageOnline(userRef)
 
 //        showImage(originalImage)
-        findViewById<Button>(R.id.btn1).visibility = View.GONE/*   findViewById<Button>(R.id.btn1).setOnClickListener {
-                   dividedImages.clear()
-                   shuffled.clear()
-                   dividedImages2.clear()
-                   selectFun()
-               }*/
+
         findViewById<Button>(R.id.btn2).setOnClickListener {
 //            shuffledImages()
             dividedImages.clear()
@@ -102,13 +99,15 @@ class ImageLocktwo : AppCompatActivity(), View.OnClickListener {
         showDividedImages(shuffled)
     }
 
+    var dialog: Dialog? = null
     private fun showImage(image: String) {
         val imageView: ImageView = findViewById(R.id.imageView)
 //        imageView.setImageBitmap(image)
-
+        dialog = progressDialog(this@ImageLocktwo, layoutInflater)
+        dialog?.show()
         Picasso.with(this).load(image).into(imageView)
         GlobalScope.launch(Dispatchers.Main) {
-            delay(2000)
+            delay(4000)
             val bm: Bitmap? = (imageView.drawable as BitmapDrawable?)?.bitmap
             dividedImages.addAll(
                 divideImageIntoParts(bm!!)
@@ -146,7 +145,8 @@ class ImageLocktwo : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun divideImageIntoParts(originalImage: Bitmap): List<Bitmap> {
+    private fun divideImageIntoParts(originalImage: Bitmap): List<Bitmap> {
+        dialog?.dismiss()
         val parts = mutableListOf<Bitmap>()
         val imageWidth = originalImage.width
         val imageHeight = originalImage.height
@@ -224,12 +224,12 @@ class ImageLocktwo : AppCompatActivity(), View.OnClickListener {
             if (dividedImages2.contains(shuffled.get(index))) {
                 Toast.makeText(this, "Already$index", Toast.LENGTH_SHORT).show()
             } else {
-                v?.background = ContextCompat.getDrawable(this, R.drawable.arrow_back)
+                v?.background = ContextCompat.getDrawable(this, R.drawable.round)
                 counter++
                 dividedImages2.add(shuffled.get(index))
             }
         } else {
-            v?.background = ContextCompat.getDrawable(this, R.drawable.arrow_back)
+            v?.background = ContextCompat.getDrawable(this, R.drawable.wrong_round)
             GlobalScope.launch(Dispatchers.Main) {
                 delay(500)
                 v?.background =
@@ -240,8 +240,9 @@ class ImageLocktwo : AppCompatActivity(), View.OnClickListener {
         if (dividedImages2.size == shuffled.size) {
 //            Toast.makeText(this, "GameWon", Toast.LENGTH_SHORT).show()
 
-            startActivity(Intent(this, HomeScreen::class.java).apply {
+            startActivity(Intent(this, GetPdf::class.java).apply {
                 putExtra("uid", uid)
+                putExtra("email", userData!!.email)
             })
         }
 

@@ -1,11 +1,14 @@
 package com.example.unifinder.RegisterPassenger;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.unifinder.MainActivity;
+import com.example.unifinder.HashObject;
 import com.example.unifinder.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,10 +28,8 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 
 
 import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class GetPdf extends AppCompatActivity {
@@ -54,6 +55,8 @@ public class GetPdf extends AppCompatActivity {
 
         hud = KProgressHUD.create(this).setStyle(KProgressHUD.Style.SPIN_INDETERMINATE).setCancellable(false).setAnimationSpeed(2).setBackgroundColor(R.color.black).setDimAmount(0.5f);
 
+        String email = getIntent().getStringExtra("email");
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,12 +76,49 @@ public class GetPdf extends AppCompatActivity {
             }
         });
 
-        btnGet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), PdfList.class);
-                startActivity(i);
-            }
+        btnGet.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(GetPdf.this);
+            LayoutInflater inflater = getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.hash_check, null);
+            builder.setView(dialogView);
+
+            // Find views within the custom layout
+            EditText messageTextView = dialogView.findViewById(R.id.tv_title_text);
+            Button okButton = dialogView.findViewById(R.id.okBtn);
+            ImageView closeBtn = dialogView.findViewById(R.id.closeBtn);
+
+
+            AlertDialog dialog2 = builder.create();
+            AtomicBoolean checker = new AtomicBoolean(false);
+            okButton.setOnClickListener(v1 -> {
+                if (HashObject.INSTANCE.verifyHash(email, messageTextView.getText().toString())) {
+                    checker.set(true);
+                    dialog2.dismiss();
+                } else {
+                    Toast.makeText(GetPdf.this, "Wrong Hash Id", Toast.LENGTH_SHORT).show();
+                }
+
+            });
+            closeBtn.setOnClickListener(v1 -> {
+//                    if (HashObject.INSTANCE.verifyHash(email, messageTextView.getText().toString())) {
+                dialog2.dismiss();
+
+
+            });
+
+            dialog2.setCancelable(false);
+            dialog2.show();
+            dialog2.setOnDismissListener(dialogInterface -> {
+                if (checker.get()) {
+                    Intent i = new Intent(getApplicationContext(), PdfList.class);
+                    startActivity(i);
+                } else {
+                    Log.d("123123", "onClick: ");
+                }
+            });
+//                checkHashFunction(GetPdf.this, email);
+
+
         });
 
 
@@ -181,5 +221,6 @@ public class GetPdf extends AppCompatActivity {
 //    }
 //        }
 //    }
+
 
 }

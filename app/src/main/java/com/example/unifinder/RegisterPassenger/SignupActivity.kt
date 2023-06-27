@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.unifinder.HashObject.hashFunction
 import com.example.unifinder.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -65,6 +66,7 @@ class SignupActivity : AppCompatActivity() {
                         userRef.child("email").setValue(email)
                         userRef.child("name").setValue(name)
                         userRef.child("img").setValue("")
+                        userRef.child("hashId").setValue(hashFunction(email))
                         Log.d("123123", "Validate:$email ")
                         Log.d("123123", "Validate:$name ")
                         Log.d("123123", "Validate:$id ")
