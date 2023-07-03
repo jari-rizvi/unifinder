@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -50,18 +51,44 @@ class LoginScreen : AppCompatActivity() {
     private fun findViews() {
         btnLogin = findViewById(R.id.btnLogin)
         btnRegisterr = findViewById(R.id.btnSignup)
-        email = findViewById(R.id.userEmail)
-        password = findViewById(R.id.userPassword)
+        email = findViewById(R.id.email)
+        password = findViewById(R.id.pass)
     }
 
     private fun Validate() {
         val usermail = email!!.text.toString()
         val userpass = password!!.text.toString()
-        if (usermail.isEmpty()) {
-            email!!.error = "Please enter Email"
-        } else if (userpass.isEmpty()) {
-            password!!.error = "Please enter valid Pass"
-        } else {
+
+//        if (usermail.isEmpty()) {
+//            email!!.error = "Please enter Email"
+//        } else if (userpass.isEmpty()) {
+//            password!!.error = "Please enter valid Pass"
+//        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(usermail.trim())
+                .matches()
+        ) {
+            Toast.makeText(
+                applicationContext, "Invalid Email", Toast.LENGTH_SHORT
+            ).show()
+
+        }
+        if (userpass.trim().isEmpty()) {
+            Toast.makeText(
+                applicationContext, "Enter Password", Toast.LENGTH_SHORT
+            ).show()
+
+        }
+        if (userpass.trim().length < 8) {
+            Toast.makeText(
+                applicationContext, "Password Length is too short", Toast.LENGTH_SHORT
+            ).show()
+
+        }
+
+
+
+        else {
             mAuth!!.signInWithEmailAndPassword(usermail, userpass).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val database = FirebaseDatabase.getInstance()

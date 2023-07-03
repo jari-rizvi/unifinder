@@ -11,7 +11,10 @@
     <color name="red">#FF0000</color>
     <color name="grey">#94959B</color>
     <color name="colorPrimaryDark">#515c6f</color>
-
+    <color name="blue">#3366FF</color>
+    <color name="mirage">#161c24</color>
+    <color name="background">#202A35</color>
+    <color name="tileColor">#212B36</color>
     <color name="colorAccent">#F1F1F1</color>
     <color name="yellow">#E4D00A</color>
     <color name="light_gray">#EEEEEE</color>

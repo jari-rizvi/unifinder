@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Please use this link below to verify your\n email and start your journey"
+        android:text="Please click the below button to verify your\n email and start your journey"
         android:textColor="@color/grey"
         android:textSize="15dp" />
 
@@ -75,30 +75,30 @@
         android:textColor="@color/black"
         android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/textView7"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Do you have any question?"
-        android:textColor="@color/black"
-        android:textSize="15dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView7"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btnLogin"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Do you have any question?"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="15dp" />-->
 
-    <TextView
-        android:id="@+id/textView8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.09"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="contact@mail.com"
-        android:textColor="@color/yellow"
-        android:textSize="14dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView8"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView7"-->
+<!--        app:layout_constraintVertical_bias="0.09"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="contact@mail.com"-->
+<!--        android:textColor="@color/yellow"-->
+<!--        android:textSize="14dp" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
