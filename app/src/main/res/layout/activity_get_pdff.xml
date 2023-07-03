@@ -28,10 +28,6 @@
 
     </RelativeLayout>
 
-
-
-
-    <!--We will click on it to view pdf-->
     <ListView
         android:id="@+id/view"
         android:layout_width="match_parent"

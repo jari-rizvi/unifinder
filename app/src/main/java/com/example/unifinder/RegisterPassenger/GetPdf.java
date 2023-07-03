@@ -22,6 +22,7 @@ import com.example.unifinder.HashObject;
 import com.example.unifinder.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kaopiz.kprogresshud.KProgressHUD;
@@ -36,6 +37,7 @@ public class GetPdf extends AppCompatActivity {
 
 
     TextView btnLogin;
+    TextView btnLogout;
     TextView btnGet;
     ImageView upload;
     Uri imageuri = null;
@@ -57,6 +59,14 @@ public class GetPdf extends AppCompatActivity {
 
         String email = getIntent().getStringExtra("email");
         uid = getIntent().getStringExtra("uid");
+
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+            }
+        });
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +140,7 @@ public class GetPdf extends AppCompatActivity {
     private void findViews() {
         btnLogin = findViewById(R.id.btnLogin);
         btnGet = findViewById(R.id.btnGet);
+        btnLogout = findViewById(R.id.btnLogout);
     }
 
 
