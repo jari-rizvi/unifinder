@@ -3,8 +3,11 @@ package com.example.unifinder.RegisterPassenger
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,10 +29,10 @@ class LoginScreen : AppCompatActivity() {
     var btnLogin: TextView? = null
     var email: EditText? = null
     var password: EditText? = null
+    var showPassword: ImageView? = null
+    var hidePassword: ImageView? = null
     var email_pattern = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$"
     var hud: KProgressHUD? = null
-    var prefUserData: SharedPreferences? = null
-    var editorUserData: SharedPreferences.Editor? = null
     private var mAuth: FirebaseAuth? = null
     private var mUser: FirebaseUser? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +49,23 @@ class LoginScreen : AppCompatActivity() {
             startActivity(i)
         }
         btnLogin!!.setOnClickListener { Validate() }
+
+
+        showPassword?.setOnClickListener {
+            password?.transformationMethod =
+                HideReturnsTransformationMethod.getInstance();
+            hidePassword?.visibility = View.VISIBLE
+            showPassword?.visibility = View.GONE
+        }
+
+        hidePassword?.setOnClickListener {
+            password?.transformationMethod =
+                PasswordTransformationMethod.getInstance();
+            hidePassword?.visibility = View.GONE
+            showPassword?.visibility = View.VISIBLE
+        }
+
+
     }
 
     private fun findViews() {
@@ -53,6 +73,8 @@ class LoginScreen : AppCompatActivity() {
         btnRegisterr = findViewById(R.id.btnSignup)
         email = findViewById(R.id.email)
         password = findViewById(R.id.pass)
+        showPassword = findViewById(R.id.showPassword)
+        hidePassword = findViewById(R.id.hidePassword)
     }
 
     private fun Validate() {
@@ -84,11 +106,7 @@ class LoginScreen : AppCompatActivity() {
                 applicationContext, "Password Length is too short", Toast.LENGTH_SHORT
             ).show()
 
-        }
-
-
-
-        else {
+        } else {
             mAuth!!.signInWithEmailAndPassword(usermail, userpass).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val database = FirebaseDatabase.getInstance()
@@ -126,7 +144,7 @@ class LoginScreen : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Successfully Login", Toast.LENGTH_SHORT)
                         .show()
                     val i = Intent(applicationContext, ImageLocktwo::class.java)
-                    i.putExtra("uid",mAuth?.currentUser!!.uid.toString())
+                    i.putExtra("uid", mAuth?.currentUser!!.uid.toString())
                     startActivity(i)
                 } else {
                     Toast.makeText(applicationContext, "Something Went Wrong ", Toast.LENGTH_SHORT)

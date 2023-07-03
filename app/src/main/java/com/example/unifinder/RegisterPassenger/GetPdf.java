@@ -183,46 +183,4 @@ public class GetPdf extends AppCompatActivity {
     }
 
 
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode == REQUEST_PDF && resultCode == RESULT_OK && data != null && data.getData() != null) {
-//            Uri pdfUri = data.getData();
-//            StorageReference storageRef = storage.getReference();
-//            StorageReference pdfRef = storageRef.child("pdfs/" + pdfUri.getLastPathSegment());
-//
-//            pdfRef.putFile(pdfUri).addOnSuccessListener(taskSnapshot -> {
-//
-//                    // File uploaded successfully
-//                    // Handle successful upload
-//                    // Get the download URL of the uploaded file
-//                    pdfRef.getDownloadUrl().addOnSuccessListener(uri -> {
-//                        String downloadUrl = uri.toString();
-//                        // Use the download URL as needed (e.g., save it to a database)
-//                        // You can also display it to the user or perform further actions
-//
-//                        // Example: Save the download URL to Firebase Realtime Database
-//                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-//
-//                        databaseRef.child("pdfs").push().setValue(downloadUrl)
-//                                .addOnSuccessListener(aVoid -> {
-//                                    // Successfully saved the download URL to the database
-//                                    // Perform any further actions if needed
-//                                })
-//                                .addOnFailureListener(e -> {
-//
-//
-//
-//                                    // File uploaded successfully
-//                // Handle successful upload
-//            }).addOnFailureListener(e -> {
-//                // Handle unsuccessful upload
-//            });
-//        }
-//
-//    }
-//        }
-//    }
-
-
 }

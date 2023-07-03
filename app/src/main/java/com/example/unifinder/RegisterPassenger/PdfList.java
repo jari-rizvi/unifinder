@@ -66,55 +66,6 @@ public class PdfList extends AppCompatActivity {
 
     }
 
-//    private void retrivePdfFiles() {
-//
-//        // Initialising the reference to database
-//        database = FirebaseDatabase.getInstance().getReference().child("pdf");
-//        database.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                for(DataSnapshot ds:dataSnapshot.getChildren()){
-//                    putPdf purpdf = ds.getValue(putPdf.class);
-//                    uploadedPdf.add(purpdf);
-//                }
-//
-//                String[] uploadNames = new String[uploadedPdf.size()];
-//
-//                for(int i = 0;i<uploadNames.length;i++){
-//                    uploadNames[i] = uploadedPdf.get(i).getName();
-//                }
-//                ArrayAdapter<String> arrayAdapter  = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,uploadNames){
-//                    @NonNull
-//                    @Override
-//                    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//
-//                        View view = super.getView(position, convertView, parent);
-//                        TextView    textView = (TextView) view.findViewById(android.R.id.text1);
-//                        textView.setTextColor(Color.BLACK);
-//                        textView.setTextSize(20);
-//                        return view;
-//                    }
-//                };
-//
-//                listView.setAdapter(arrayAdapter);
-//
-//                // getting a DataSnapshot for the location at the specified
-//                // relative path and getting in the link variable
-//                message = dataSnapshot.getValue(String.class);
-//            }
-//
-//            // this will called when any problem
-//            // occurs in getting data
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                // we are showing that error message in toast
-//                Toast.makeText(PdfList.this, "Error Loading Pdf", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

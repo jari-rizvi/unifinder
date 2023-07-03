@@ -1,164 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-
-<!--    tools:context=".RegisterPassenger.SignupActivity">-->
-
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        android:visibility="gone"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.06"-->
-<!--        app:srcCompat="@drawable/booking" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Sign up"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30dp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imageView"-->
-<!--        app:layout_constraintVertical_bias="0.02" />-->
-
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/cardView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="65dp"-->
-<!--        android:layout_marginHorizontal="40dp"-->
-<!--        android:elevation="1dp"-->
-<!--        app:cardBackgroundColor="@color/colorAccent"-->
-<!--        app:cardCornerRadius="30dp"-->
-<!--        app:cardElevation="1dp"-->
-<!--        app:cardMaxElevation="1dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView"-->
-<!--        app:layout_constraintVertical_bias="0.07">-->
-
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="@drawable/text_field_background"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="2dp">-->
-
-<!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:text="Email" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/userFirstName"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:hint="Email"-->
-<!--                android:textColorHint="@color/black"-->
-<!--                android:imeOptions="actionNext"-->
-<!--                android:inputType="textEmailAddress"-->
-<!--                android:maxLines="1"-->
-<!--                android:paddingStart="15dp"-->
-<!--                android:paddingTop="25dp"-->
-<!--                android:paddingEnd="10dp" />-->
-
-
-<!--        </RelativeLayout>-->
-
-<!--    </androidx.cardview.widget.CardView>-->
-
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/cardView3"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="65dp"-->
-<!--        android:layout_marginHorizontal="40dp"-->
-<!--        android:elevation="1dp"-->
-<!--        app:cardBackgroundColor="@color/colorAccent"-->
-<!--        app:cardCornerRadius="30dp"-->
-<!--        app:cardElevation="1dp"-->
-<!--        app:cardMaxElevation="1dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/cardView"-->
-<!--        app:layout_constraintVertical_bias="0.05">-->
-
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="@drawable/text_field_background"-->
-<!--            android:orientation="vertical"-->
-<!--            android:padding="2dp">-->
-
-<!--            <com.google.android.material.textview.MaterialTextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:text="Password" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/userPassword"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:hint="*********"-->
-<!--                android:imeOptions="actionDone"-->
-<!--                android:inputType="textPassword"-->
-<!--                android:maxLines="1"-->
-<!--                android:textColorHint="@color/black"-->
-<!--                android:paddingStart="15dp"-->
-<!--                android:paddingTop="25dp"-->
-<!--                android:paddingEnd="10dp" />-->
-
-
-<!--        </RelativeLayout>-->
-
-<!--    </androidx.cardview.widget.CardView>-->
-
-
-<!--    <TextView-->
-<!--        android:id="@+id/btnRegister"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="55dp"-->
-<!--        android:layout_marginHorizontal="60dp"-->
-<!--        android:background="@drawable/text_field_background"-->
-<!--        android:backgroundTint="@color/black"-->
-<!--        android:gravity="center"-->
-<!--        android:text="SIGN UP"-->
-<!--        android:textColor="@color/white"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/cardView3"-->
-<!--        app:layout_constraintVertical_bias="0.45" />-->
-
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -286,6 +126,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView24"
             app:layout_constraintVertical_bias="0.92" />
+
+
+        <ImageView
+            android:id="@+id/showPassword"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/show_password"
+            app:layout_constraintBottom_toBottomOf="@+id/pass"
+            app:layout_constraintEnd_toEndOf="@+id/pass"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="@+id/pass"
+            app:layout_constraintTop_toTopOf="@+id/pass" />
+        <ImageView
+            android:id="@+id/hidePassword"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:src="@drawable/hide_password"
+            app:layout_constraintBottom_toBottomOf="@+id/pass"
+            app:layout_constraintEnd_toEndOf="@+id/pass"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="@+id/pass"
+            app:layout_constraintTop_toTopOf="@+id/pass" />
+
 
         <TextView
             android:id="@+id/textView24"

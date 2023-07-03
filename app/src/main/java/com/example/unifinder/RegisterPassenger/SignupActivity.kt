@@ -2,9 +2,13 @@ package com.example.unifinder.RegisterPassenger
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +24,8 @@ class SignupActivity : AppCompatActivity() {
     var btnSignup: TextView? = null
     var email: EditText? = null
     var password: EditText? = null
+    var showPassword: ImageView? = null
+    var hidePassword: ImageView? = null
     var email_pattern = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +34,29 @@ class SignupActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         mUser = mAuth!!.currentUser
         btnSignup!!.setOnClickListener { Validate() }
+
+        showPassword?.setOnClickListener {
+            password?.transformationMethod =
+                HideReturnsTransformationMethod.getInstance();
+            hidePassword?.visibility = View.VISIBLE
+            showPassword?.visibility = View.GONE
+        }
+
+        hidePassword?.setOnClickListener {
+            password?.transformationMethod =
+                PasswordTransformationMethod.getInstance();
+            hidePassword?.visibility = View.GONE
+            showPassword?.visibility = View.VISIBLE
+        }
+
     }
 
     private fun findViews() {
         btnSignup = findViewById(R.id.btnRegister)
         email = findViewById(R.id.email)
         password = findViewById(R.id.pass)
+        showPassword = findViewById(R.id.showPassword)
+        hidePassword = findViewById(R.id.hidePassword)
     }
 
 
