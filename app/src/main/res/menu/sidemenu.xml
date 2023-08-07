@@ -6,7 +6,7 @@
         <item
             android:id="@+id/opHome"
             android:checkable="true"
-            android:icon="@drawable/home"
+            android:icon="@drawable/baseline_home_24"
             android:iconTint="@color/colorPrimary"
             android:title="Home" />
         <item
