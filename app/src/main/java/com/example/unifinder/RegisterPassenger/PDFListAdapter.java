@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class PDFListAdapter extends ArrayAdapter<String> {
-    public PDFListAdapter(Context context, List<String> pdfFiles) {
+public class PDFListAdapter extends ArrayAdapter<FirebaseModel> {
+    public PDFListAdapter(Context context, List<FirebaseModel> pdfFiles) {
         super(context, 0, pdfFiles);
     }
 
@@ -25,7 +25,7 @@ public class PDFListAdapter extends ArrayAdapter<String> {
         }
 
         TextView pdfTextView = convertView.findViewById(android.R.id.text1);
-        pdfTextView.setText(getItem(position));
+        pdfTextView.setText(getItem(position).fileName);
 
         return convertView;
     }

@@ -1,7 +1,10 @@
 package com.example.unifinder.RegisterPassenger;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +12,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,9 +32,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
+import com.example.unifinder.HashObject;
 import com.example.unifinder.MainActivity;
 import com.example.unifinder.R;
+import com.example.unifinder.RecListAdapter;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,19 +45,23 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.ktx.Firebase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class PdfList extends AppCompatActivity {
+public class PdfList extends AppCompatActivity implements OnListInterface {
     TextView btnLogin;
 
     ListView listView;
+    RecListAdapter recListAdapter;
+    ArrayList<FirebaseModel> firebaseModels;
     KProgressHUD hud;
     ProgressDialog dialog;
 
@@ -73,6 +85,9 @@ public class PdfList extends AppCompatActivity {
         uid = getIntent().getStringExtra("uid");
         findViews();
 
+        firebaseModels = new ArrayList<FirebaseModel>();
+//        recListAdapter = new RecListAdapter(this, firebaseModels);
+
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child("" + uid);
 
@@ -83,6 +98,8 @@ public class PdfList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
 //                putPdf putPdf = uploadedPdf.get(i);
 //                Intent intent = new Intent(Intent.ACTION_VIEW);
 //                intent.setType("application/pdf");
@@ -91,6 +108,8 @@ public class PdfList extends AppCompatActivity {
 
 
 //                showLongPressDialog(PdfList.this);
+                Log.d("123123", "onItemClick: " + i);
+                getFileUrl(firebaseModels.get(i).storageReference);
 
 
             }
@@ -105,17 +124,22 @@ public class PdfList extends AppCompatActivity {
             @Override
             public void onSuccess(ListResult listResult) {
                 List<StorageReference> pdfFiles = listResult.getItems();
+
                 Log.e("12121244444", "onSuccess: " + pdfFiles.size());
 
 
-                List<String> pdfFileNames = new ArrayList<>();
+//                List<String> pdfFileNames = new ArrayList<>();
                 for (StorageReference pdfFile : pdfFiles) {
-                    pdfFileNames.add(pdfFile.getName());
-                    Log.e("121212", "onSuccess: " + pdfFileNames.toString());
+
+
+//                    pdfFileNames.add(pdfFile.getName());
+                    firebaseModels.add(new FirebaseModel(pdfFile, pdfFile.getName()));
+//                    Log.e("121212", "onSuccess: " + pdfFileNames.toString());
                 }
 
                 ListView pdfListView = findViewById(R.id.view);
-                PDFListAdapter adapter = new PDFListAdapter(PdfList.this, pdfFileNames);
+                PDFListAdapter adapter = new PDFListAdapter(PdfList.this, firebaseModels);
+//                PDFListAdapter adapter = new PDFListAdapter(PdfList.this, pdfFileNames);
                 pdfListView.setAdapter(adapter);
 
             }
@@ -158,6 +182,58 @@ public class PdfList extends AppCompatActivity {
 //        });
     }
 
+
+    private void getFileUrl(StorageReference storageReference) {
+
+//        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("your file name as is from firebase storage");
+        storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+            Log.e("121212", "onSuccess: " + uri);
+
+//            dialog.show();
+            String url = uri.toString();
+            String directory = this.getFilesDir().toString();
+            downloadFile(this, "" + System.currentTimeMillis(), ".pdf", directory, url);
+//            dialog.dismiss();
+        }).addOnFailureListener(e -> {
+//            dialog.dismiss();
+        });
+    }
+
+
+    private void downloadFile(Context context, String fileName, String fileExtension, String destinationDirectory, String url) {
+        Dialog dialog1 = HashObject.INSTANCE.progressDialog(context, getLayoutInflater());
+        dialog1.show();
+        DownloadManager downloadmanager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        Uri uri = Uri.parse(url);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName + fileExtension);
+
+        downloadmanager.enqueue(request);
+//downloadmanager.openDownloadedFile()
+        new Handler().postDelayed(() -> {
+
+            Log.d("123123", "run: ");
+            File file = new File(destinationDirectory, fileName + fileExtension);
+            Log.d("123123", "run: " + file.getAbsolutePath());
+//                Uri path = Uri.fromFile(file);
+            Uri path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", file);
+            Intent pdfOpenintent = new Intent(Intent.ACTION_VIEW);
+            pdfOpenintent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            pdfOpenintent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            pdfOpenintent.setDataAndType(uri, "application/pdf");
+            try {
+        dialog1.dismiss();
+                startActivity(pdfOpenintent);
+            } catch (ActivityNotFoundException e) {
+                e.printStackTrace();
+            }
+        }, 3500);
+
+    }
+
+
     private void showLongPressDialog(Context context) {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
         LayoutInflater inflater = getLayoutInflater();
@@ -174,11 +250,8 @@ public class PdfList extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
 
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        okButton.setOnClickListener(v -> {
 
-            }
         });
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -236,4 +309,8 @@ public class PdfList extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClickItem(int position, FirebaseModel firebaseModel) {
+//        getFileUrl(firebaseModel.storageReference);
+    }
 }
