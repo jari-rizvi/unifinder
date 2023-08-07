@@ -17,7 +17,7 @@
         app:layout_constraintVertical_bias="0.19"
 
         android:layout_width="0dp"
-        android:layout_height="@dimen/_100sdp" />
+        android:layout_height="@dimen/_30sdp" />
 
 
     <TextView
@@ -33,6 +33,22 @@
         android:text="WTech"
         android:textColor="@color/black"
         android:textSize="@dimen/_43ssp" />
+
+    <TextView
+        android:id="@+id/textViewTitle6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:gravity="center"
+        android:text="WTech is platform for all women in tech who looking for platform where they can grew and learn within tech industry by experts and resources."
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.197" />
 
     <TextView
         android:id="@+id/btnLogin"
