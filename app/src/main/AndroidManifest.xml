@@ -16,21 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/NoAppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
+
         <activity
             android:name=".RegisterPassenger.SignupActivity"
             android:exported="false" />
-        <activity
-            android:name=".RegisterPassenger.ImageLocktwo"
-            android:exported="false" />
+
         <activity
             android:name=".RegisterPassenger.LoginScreen"
             android:exported="false" />
-        <activity
-            android:name=".RegisterPassenger.ImageLock"
-            android:exported="false" />
+
         <activity
             android:name=".RegisterPassenger.GetPdf"
             android:exported="false">

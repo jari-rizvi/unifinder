@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UniFinder</string>
+    <string name="app_name">WTech</string>
     <string name="name_error">Please enter a Name</string>
     <string name="name">Name</string>
     <string name="userName_error">Please enter a User NAme</string>
