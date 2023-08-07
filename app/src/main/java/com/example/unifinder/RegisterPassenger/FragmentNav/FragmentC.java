@@ -40,6 +40,15 @@ public class FragmentC extends Fragment implements OnListInterface {
         workShopModels = new ArrayList();
 
         workShopModels.add(new WorkShopModel());
+        workShopModels.add(new WorkShopModel());
+        workShopModels.add(new WorkShopModel());
+        workShopModels.add(new WorkShopModel());
+        workShopModels.add(new WorkShopModel());
+        workShopModels.add(new WorkShopModel());
+        workShopModels.add(new WorkShopModel());
+        workShopModels.add(new WorkShopModel());
+        workShopModels.add(new WorkShopModel());
+        workShopModels.add(new WorkShopModel());
         recyclerView = view.findViewById(R.id.workshopRec);
 
         addWorkshopRec();

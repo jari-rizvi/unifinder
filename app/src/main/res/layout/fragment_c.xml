@@ -6,14 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".RegisterPassenger.FragmentNav.FragmentC">
 
+    <TextView
+        android:id="@+id/titleHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:gravity="center"
+        android:text="WTech"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_33ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/SupportHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:gravity="center"
+        android:text="Workshops"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_23ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleHome" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/workshopRec"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        tools:listitem="@layout/item_workshop"
+        tools:itemCount="9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/SupportHome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -116,9 +116,8 @@
             android:layout_height="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_12sdp"
             android:progress="25"
-            android:progressBackgroundTint="@android:color/darker_gray"
-
-            android:progressTint="#4CAF50"
+            android:progressBackgroundTint="@android:color/white"
+            android:progressTint="#1CE424"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@+id/titleHome"
