@@ -12,10 +12,10 @@ import com.example.unifinder.R;
 import java.util.ArrayList;
 
 public class WorkShopAdapter extends RecyclerView.Adapter<WorkShopViewHolder> {
-    OnListInterface onListInterface;
+    OnListInterface2 onListInterface;
     ArrayList<WorkShopModel> workShopModels;
 
-    public WorkShopAdapter(OnListInterface onListInterface, ArrayList<WorkShopModel> firebaseModels) {
+    public WorkShopAdapter(OnListInterface2 onListInterface, ArrayList<WorkShopModel> firebaseModels) {
         this.onListInterface = onListInterface;
         this.workShopModels = firebaseModels;
     }
@@ -29,7 +29,9 @@ public class WorkShopAdapter extends RecyclerView.Adapter<WorkShopViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull WorkShopViewHolder holder, int position) {
-
+        holder.itemView.setOnClickListener(v -> {
+            onListInterface.onClickItem(position, workShopModels.get(position));
+        });
     }
 
     @Override
@@ -44,3 +46,4 @@ class WorkShopViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
     }
 }
+

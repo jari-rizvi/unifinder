@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,14 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unifinder.R;
-import com.example.unifinder.RegisterPassenger.FirebaseModel;
-import com.example.unifinder.RegisterPassenger.OnListInterface;
+import com.example.unifinder.RegisterPassenger.OnListInterface2;
 import com.example.unifinder.RegisterPassenger.WorkShopAdapter;
 import com.example.unifinder.RegisterPassenger.WorkShopModel;
 
 import java.util.ArrayList;
 
-public class FragmentC extends Fragment implements OnListInterface {
+public class FragmentC extends Fragment implements OnListInterface2 {
 
 
     ArrayList<WorkShopModel> workShopModels;
@@ -64,7 +64,7 @@ public class FragmentC extends Fragment implements OnListInterface {
     }
 
     @Override
-    public void onClickItem(int position, FirebaseModel firebaseModel) {
-
+    public void onClickItem(int position, WorkShopModel firebaseModel) {
+        Toast.makeText(requireContext(), "Enrolled", Toast.LENGTH_SHORT).show();
     }
 }
