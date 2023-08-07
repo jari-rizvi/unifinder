@@ -8,16 +8,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.unifinder.R;
+import com.example.unifinder.RegisterPassenger.FirebaseModel;
+import com.example.unifinder.RegisterPassenger.OnListInterface;
+import com.example.unifinder.RegisterPassenger.WorkShopAdapter;
 import com.example.unifinder.RegisterPassenger.WorkShopModel;
 
 import java.util.ArrayList;
 
-public class FragmentC extends Fragment {
+public class FragmentC extends Fragment implements OnListInterface {
 
 
     ArrayList<WorkShopModel> workShopModels;
+
+    WorkShopAdapter workShopAdapter;
+    RecyclerView recyclerView;
 
 
     @Override
@@ -32,6 +39,8 @@ public class FragmentC extends Fragment {
 
         workShopModels = new ArrayList();
 
+        workShopModels.add(new WorkShopModel());
+        recyclerView = view.findViewById(R.id.workshopRec);
 
         addWorkshopRec();
 
@@ -40,9 +49,13 @@ public class FragmentC extends Fragment {
     void addWorkshopRec() {
 
 
+        workShopAdapter = new WorkShopAdapter(this, workShopModels);
 
-
-
+        recyclerView.setAdapter(workShopAdapter);
     }
 
+    @Override
+    public void onClickItem(int position, FirebaseModel firebaseModel) {
+
+    }
 }

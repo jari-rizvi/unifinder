@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_80sdp"
+    android:layout_gravity="center"
+    android:layout_marginStart="@dimen/_3sdp"
+    android:layout_marginEnd="@dimen/_3sdp"
+    android:background="@color/colorPrimary">
 
-    </data>
+    <TextView
+        android:id="@+id/txtitemName"
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_80sdp"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/_3sdp"
-        android:layout_marginEnd="@dimen/_3sdp"
-        android:background="@color/colorPrimary">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faux Sued Ankle Boots"
+        android:textColor="#404040"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtitemName"
-            style="@style/noah_medium_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintHorizontal_bias="0.05"
-            android:text="Faux Sued Ankle Boots"
-            android:textColor="#404040"
-            android:textStyle="bold"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintBottom_toTopOf="@+id/txtDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/txtDescription"
 
-        <TextView
-            android:id="@+id/txtDescription"
-            style="@style/secondary_light_medium"
-            android:layout_width="0dp"
+        android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtitemName"
             app:layout_constraintHorizontal_bias="0"
@@ -48,7 +42,7 @@
 
         <TextView
             android:id="@+id/txtItemQuantity"
-            style="@style/secondary_regular_medium"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtDescription"
@@ -64,18 +58,18 @@
             android:layout_below="@id/txtItemQuantity"
             android:alpha="0.1"
             app:layout_constraintTop_toBottomOf="@+id/txtItemQuantity"
-            android:background="@color/textSecondaryColor"
+
             app:layout_constraintBottom_toBottomOf="parent" />
 
 
         <TextView
             android:id="@+id/btnReview"
-            style="@style/secondary_regular_medium"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintHorizontal_bias="0.95"
             android:textStyle="bold"
-            android:text="@string/review"
+            android:text="Review"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintBottom_toBottomOf="@+id/txtDescription"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,5 +77,3 @@
             app:layout_constraintTop_toTopOf="@+id/txtDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</layout>

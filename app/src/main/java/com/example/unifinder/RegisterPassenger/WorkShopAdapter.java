@@ -34,7 +34,7 @@ public class WorkShopAdapter extends RecyclerView.Adapter<WorkShopViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return workShopModels.size();
     }
 }
 
