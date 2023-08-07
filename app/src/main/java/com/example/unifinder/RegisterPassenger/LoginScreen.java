@@ -146,7 +146,7 @@ public class LoginScreen extends AppCompatActivity {
                 });
 
                 Toast.makeText(getApplicationContext(), "Successfully Login", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getApplicationContext(), ImageLocktwo.class);
+                Intent i = new Intent(getApplicationContext(), HomeScreen.class);
                 i.putExtra("uid", mAuth.getCurrentUser().getUid());
                 startActivity(i);
             } else {

@@ -1,5 +1,7 @@
 package com.example.unifinder.RegisterPassenger;
 
+import static com.example.unifinder.RegisterPassenger.Utils.progressDialog;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DownloadManager;
@@ -34,7 +36,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-import com.example.unifinder.HashObject;
 import com.example.unifinder.MainActivity;
 import com.example.unifinder.R;
 import com.example.unifinder.RecListAdapter;
@@ -201,7 +202,7 @@ public class PdfList extends AppCompatActivity implements OnListInterface {
 
 
     private void downloadFile(Context context, String fileName, String fileExtension, String destinationDirectory, String url) {
-        Dialog dialog1 = HashObject.INSTANCE.progressDialog(context, getLayoutInflater());
+        Dialog dialog1 =  progressDialog(context, getLayoutInflater());
         dialog1.show();
         DownloadManager downloadmanager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         Uri uri = Uri.parse(url);

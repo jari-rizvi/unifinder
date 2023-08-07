@@ -1,5 +1,7 @@
 package com.example.unifinder.RegisterPassenger;
 
+import static com.example.unifinder.RegisterPassenger.SignupActivity.hashFunction;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,7 +20,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.unifinder.HashObject;
 import com.example.unifinder.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -100,7 +101,7 @@ public class GetPdf extends AppCompatActivity {
             AlertDialog dialog2 = builder.create();
             AtomicBoolean checker = new AtomicBoolean(false);
             okButton.setOnClickListener(v1 -> {
-                if (HashObject.INSTANCE.verifyHash(email, messageTextView.getText().toString())) {
+                if (verifyHash(email, messageTextView.getText().toString())) {
                     checker.set(true);
                     dialog2.dismiss();
                 } else {
@@ -187,5 +188,9 @@ public class GetPdf extends AppCompatActivity {
         }
     }
 
+    static Boolean verifyHash(String originalData, String hashValue) {
+        String calculatedHash = hashFunction(originalData);
+        return calculatedHash == hashValue;
+    }
 
 }

@@ -99,7 +99,7 @@ public class SignupActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         Log.d("TAG", "createUserWithEmail:success");
-                        Intent i = new Intent(getApplicationContext(), ImageLock.class);
+                        Intent i = new Intent(getApplicationContext(), HomeScreen.class);
                         i.putExtra("uid", mAuth.getCurrentUser().getUid());
                         i.putExtra("email", mAuth.getCurrentUser().getEmail());
                         i.putExtra("displayName", mAuth.getCurrentUser().getDisplayName());
