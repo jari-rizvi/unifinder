@@ -8,6 +8,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -15,8 +16,8 @@
         android:layout_marginVertical="@dimen/_5sdp"
 
         android:elevation="@dimen/_5sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="6dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <CheckedTextView
             android:id="@+id/chooserId"
@@ -25,97 +26,132 @@
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/username"
+            android:id="@+id/titleHome"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="WTech"
+            android:textColor="@color/black"
             android:layout_marginTop="@dimen/_11sdp"
-            android:text="John Doe"
+            android:textSize="@dimen/_33ssp"
             android:textAlignment="viewStart"
-            app:layout_constraintBottom_toTopOf="@+id/txtdeliveryAddressHouse"
+            app:layout_constraintBottom_toTopOf="@+id/supportHeading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtdeliveryAddressHouse"
+            android:id="@+id/supportHeading"
 
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/username"
-            android:text="No 123 sub street,"
+            android:layout_below="@id/titleHome"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:text="Upcoming Workshops"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp"
             android:textAlignment="viewStart"
-            app:layout_constraintBottom_toTopOf="@+id/txtdeliveryAddressCityProvince"
+            app:layout_constraintBottom_toTopOf="@+id/workShopTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
+            app:layout_constraintStart_toStartOf="@+id/titleHome"
+            app:layout_constraintTop_toBottomOf="@+id/titleHome" />
 
         <TextView
-            android:id="@+id/txtdeliveryAddressCityProvince"
+            android:id="@+id/workShopTitle"
 
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtdeliveryAddressHouse"
+            android:layout_below="@id/supportHeading"
             android:text="main street,"
             android:textAlignment="viewStart"
-            app:layout_constraintBottom_toTopOf="@+id/txtdeliveryAddressCityCountry"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionWorkShop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/txtdeliveryAddressHouse" />
+            app:layout_constraintStart_toStartOf="@+id/titleHome"
+            app:layout_constraintTop_toBottomOf="@+id/supportHeading" />
 
 
         <TextView
-            android:id="@+id/txtdeliveryAddressCityCountry"
+            android:id="@+id/descriptionWorkShop"
 
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtdeliveryAddressCityProvince"
+            android:layout_below="@id/workShopTitle"
             android:layout_marginBottom="@dimen/_5sdp"
-            android:text="city name, province, \n country"
+            android:text="city name, province,   country"
             android:textAlignment="viewStart"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/txtdeliveryAddressCityProvince" />
+            app:layout_constraintStart_toStartOf="@+id/titleHome"
+            app:layout_constraintTop_toBottomOf="@+id/workShopTitle" />
 
 
         <TextView
-            android:id="@+id/txtdeliveryAddressCityCountry2"
+            android:id="@+id/trackTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_5sdp"
             android:text="Tracking of courses overall progress"
+            android:layout_marginTop="@dimen/_28sdp"
             android:textAlignment="viewStart"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/_16ssp"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/txtdeliveryAddressCityCountry" />
+            app:layout_constraintStart_toStartOf="@+id/titleHome"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionWorkShop" />
 
 
         <ProgressBar
-            android:id="@+id/txtdeliveryAddressCityCountry3"
+            android:id="@+id/progressTxt"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="0dp"
-            android:layout_height="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:progress="25"
+            android:progressBackgroundTint="@android:color/darker_gray"
+
+            android:progressTint="#4CAF50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/txtdeliveryAddressCityCountry2" />
+            app:layout_constraintStart_toStartOf="@+id/titleHome"
+            app:layout_constraintTop_toBottomOf="@+id/trackTitle" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/aboutUs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_26sdp"
+        android:text="About WTech"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLayout" />
+
+    <TextView
+        android:id="@+id/supportTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:lineSpacingExtra="@dimen/_13sdp"
+        android:text="WTech is platform for all women in tech who looking for platform where they can grew and learn within tech industry by experts and resources."
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintEnd_toEndOf="@id/aboutUs"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/aboutUs"
+        app:layout_constraintTop_toBottomOf="@+id/aboutUs" />
 </androidx.constraintlayout.widget.ConstraintLayout>
