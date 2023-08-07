@@ -31,21 +31,14 @@ object HashObject {
         println("Is valid? $isValid")
     }
 
-    fun progressDialog(context: Context,layoutInflater:LayoutInflater): Dialog {
+   /* fun progressDialog(context: Context,layoutInflater:LayoutInflater): Dialog {
         val builder = AlertDialog.Builder(context)
         val inflater: LayoutInflater = layoutInflater
         val dialogView = inflater.inflate(R.layout.progressdialog, null)
         builder.setView(dialogView)
-
         // Find views within the custom layout
         val dialog = builder.create()
         dialog.setCancelable(false)
         return dialog
-
-        /*dialog.setOnDismissListener {
-            startActivity(Intent(this@ImageLock, GetPdf::class.java).apply {
-                putExtra("email", email)
-            })
-        }*/
-    }
+    }*/
 }

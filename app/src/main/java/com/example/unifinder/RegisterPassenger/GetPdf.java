@@ -20,15 +20,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.unifinder.HashObject;
 import com.example.unifinder.R;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.kaopiz.kprogresshud.KProgressHUD;
-
-
-import com.google.android.gms.tasks.Continuation;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -111,10 +109,7 @@ public class GetPdf extends AppCompatActivity {
 
             });
             closeBtn.setOnClickListener(v1 -> {
-//                    if (HashObject.INSTANCE.verifyHash(email, messageTextView.getText().toString())) {
                 dialog2.dismiss();
-
-
             });
 
             dialog2.setCancelable(false);
@@ -128,7 +123,6 @@ public class GetPdf extends AppCompatActivity {
                     Log.d("123123", "onClick: ");
                 }
             });
-//                checkHashFunction(GetPdf.this, email);
 
 
         });
