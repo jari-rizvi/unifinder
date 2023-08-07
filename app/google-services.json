@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "426175595949",
-    "project_id": "securityapp-1e702",
-    "storage_bucket": "securityapp-1e702.appspot.com"
+    "project_number": "346254501603",
+    "project_id": "w-tech-c9e66",
+    "storage_bucket": "w-tech-c9e66.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:426175595949:android:202e1471cf2f1a7e3a4d24",
+        "mobilesdk_app_id": "1:346254501603:android:104261d12d44eb698047d6",
         "android_client_info": {
           "package_name": "com.example.unifinder"
         }
       },
       "oauth_client": [
         {
-          "client_id": "426175595949-ihsm5hmpj0odk4kcm1t3mot9494an45l.apps.googleusercontent.com",
+          "client_id": "346254501603-ma35ciaumaic1rml6lh7k77j4blt1rkj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.unifinder",
+            "certificate_hash": "b9167e5fbfb08ca77137bd2da159c3b9d43f8d78"
+          }
+        },
+        {
+          "client_id": "346254501603-bqkcac3nh77sb04je33723relf0gup7f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDTpHA8-ljJgy6a4oFT_kBNFULGguNRwY8"
+          "current_key": "AIzaSyDHAyg5E6cdQOcrH99-dO3hxfvZ6QZNh28"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "426175595949-ihsm5hmpj0odk4kcm1t3mot9494an45l.apps.googleusercontent.com",
+              "client_id": "346254501603-bqkcac3nh77sb04je33723relf0gup7f.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

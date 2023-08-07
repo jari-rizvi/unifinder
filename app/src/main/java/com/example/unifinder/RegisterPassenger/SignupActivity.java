@@ -28,9 +28,16 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseUser mUser;
     private TextView btnSignup;
     private EditText email;
-    private EditText password;
+
+    private EditText newPass;
+    private EditText cnfrmPass;
+
+    private EditText firstName;
+    private EditText lastName;
     private ImageView showPassword;
     private ImageView hidePassword;
+    private ImageView cnfrmshowPassword;
+    private ImageView cnfrmhidePassword;
     private String email_pattern = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$";
 
     @Override
@@ -52,18 +59,34 @@ public class SignupActivity extends AppCompatActivity {
         showPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                password.setTransformationMethod(null);
+                newPass.setTransformationMethod(null);
                 hidePassword.setVisibility(View.VISIBLE);
                 showPassword.setVisibility(View.GONE);
+            }
+        });
+        cnfrmshowPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cnfrmPass.setTransformationMethod(null);
+                cnfrmhidePassword.setVisibility(View.VISIBLE);
+                cnfrmshowPassword.setVisibility(View.GONE);
             }
         });
 
         hidePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                password.setTransformationMethod(new PasswordTransformationMethod());
+                newPass.setTransformationMethod(new PasswordTransformationMethod());
                 hidePassword.setVisibility(View.GONE);
                 showPassword.setVisibility(View.VISIBLE);
+            }
+        });
+        cnfrmhidePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cnfrmPass.setTransformationMethod(new PasswordTransformationMethod());
+                cnfrmhidePassword.setVisibility(View.GONE);
+                cnfrmshowPassword.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -71,14 +94,22 @@ public class SignupActivity extends AppCompatActivity {
     private void findViews() {
         btnSignup = findViewById(R.id.btnRegister);
         email = findViewById(R.id.email);
-        password = findViewById(R.id.pass);
+        newPass = findViewById(R.id.newPass);
+        cnfrmPass = findViewById(R.id.CnfrmPass);
+        firstName = findViewById(R.id.etFirstName);
+        lastName = findViewById(R.id.etLastName);
         showPassword = findViewById(R.id.showPassword);
+        cnfrmshowPassword = findViewById(R.id.showPasswordConfirm);
         hidePassword = findViewById(R.id.hidePassword);
+        cnfrmhidePassword = findViewById(R.id.hidePasswordConfirm);
     }
 
     private void Validate() {
         String usermail = email.getText().toString();
-        String userpass = password.getText().toString();
+        String userpass = newPass.getText().toString();
+        String userCnfrmpass = cnfrmPass.getText().toString();
+        String userlastName = lastName.getText().toString();
+        String userfirstName = firstName.getText().toString();
 
         if (!Patterns.EMAIL_ADDRESS.matcher(usermail.trim()).matches()) {
             Toast.makeText(getApplicationContext(), "Invalid Email", Toast.LENGTH_SHORT).show();
@@ -89,9 +120,27 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Enter Password", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (userfirstName.trim().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Enter First Name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (userlastName.trim().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Enter Last Name", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (userpass.trim().length() < 8) {
             Toast.makeText(getApplicationContext(), "Password Length is too short", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (userCnfrmpass.trim().length() < 8) {
+            Toast.makeText(getApplicationContext(), "Password Length is too short", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!userpass.toString()
+                .equals(userCnfrmpass.toString())
+        ) {
+            Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -139,6 +188,7 @@ public class SignupActivity extends AppCompatActivity {
             // Reload UI if needed.
         }
     }
+
     public static String hashFunction(String data) {
         try {
             MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
