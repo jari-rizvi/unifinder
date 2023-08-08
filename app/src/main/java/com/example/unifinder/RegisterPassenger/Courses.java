@@ -5,6 +5,9 @@ public class Courses {
 
     String Description;
 
+    public Courses() {
+    }
+
     public String getDescription() {
         return Description;
     }
@@ -32,7 +35,9 @@ public class Courses {
     String enroll;
     String CourseName;
 
-    public Courses(String enroll, String description, String courseName) {
+    public Courses(String courseName, String description, String enroll) {
+        Description = description;
+        this.enroll = enroll;
+        CourseName = courseName;
     }
-
 }

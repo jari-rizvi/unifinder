@@ -3,6 +3,7 @@ package com.example.unifinder.RegisterPassenger;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,9 +30,17 @@ public class WorkShopAdapter extends RecyclerView.Adapter<WorkShopViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull WorkShopViewHolder holder, int position) {
-        holder.itemView.setOnClickListener(v -> {
-            onListInterface.onClickItem(position, workShopModels.get(position));
+        WorkShopModel workShopModel = workShopModels.get(position);
+        holder.btnReview.setOnClickListener(v -> {
+            onListInterface.onClickItem(position, workShopModel);
         });
+
+        holder.txtitemName.setText(workShopModel.getWorkShopTitle());
+        holder.txtDescription.setText(workShopModel.getWorkShopDetails());
+
+//        if (workShopModel.getWorkshopActive()) {
+//            holder.btnReview.setText("Enrolled");
+//        }
     }
 
     @Override
@@ -41,9 +50,15 @@ public class WorkShopAdapter extends RecyclerView.Adapter<WorkShopViewHolder> {
 }
 
 class WorkShopViewHolder extends RecyclerView.ViewHolder {
+    TextView txtitemName;
+    TextView btnReview;
+    TextView txtDescription;
 
     public WorkShopViewHolder(@NonNull View itemView) {
         super(itemView);
+        txtitemName = itemView.findViewById(R.id.txtitemName);
+        btnReview = itemView.findViewById(R.id.btnReview);
+        txtDescription = itemView.findViewById(R.id.txtDescription);
     }
 }
 

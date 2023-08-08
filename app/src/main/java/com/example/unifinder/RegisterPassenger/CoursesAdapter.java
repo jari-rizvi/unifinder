@@ -1,5 +1,6 @@
 package com.example.unifinder.RegisterPassenger;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapterViewHolde
     @Override
     public void onBindViewHolder(@NonNull CoursesAdapterViewHolder holder, int position) {
 
-
+        Log.d("TAG", "onBindViewHolder: " + coursesModels.get(position).getCourseName());
         holder.txtitemName.setText(coursesModels.get(position).getCourseName());
         holder.txtDescription.setText(coursesModels.get(position).getDescription());
 
