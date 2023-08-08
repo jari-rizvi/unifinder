@@ -25,19 +25,6 @@
             android:name=".RegisterPassenger.LoginScreen"
             android:exported="false" />
 
-        <activity
-            android:name=".RegisterPassenger.GetPdf"
-            android:exported="false">
-
-        </activity>
-
-        <activity
-            android:name=".RegisterPassenger.PdfList"
-            android:exported="false">
-
-
-        </activity>
-
 
         <activity
             android:name=".RegisterPassenger.HomeScreen"
