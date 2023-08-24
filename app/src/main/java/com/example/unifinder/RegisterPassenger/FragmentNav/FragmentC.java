@@ -53,6 +53,10 @@ public class FragmentC extends Fragment implements OnListInterface2 {
 
     }
 
+
+    /**
+     *this function will get the list of workshops from database
+     */
     void addListFirebaseModel() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dbref = database.getReference("workshop");
@@ -89,6 +93,10 @@ public class FragmentC extends Fragment implements OnListInterface2 {
         recyclerView.setAdapter(workShopAdapter);
     }
 
+
+    /**
+     *when the user click on enrolled button it will show user a toast
+     */
     @Override
     public void onClickItem(int position, WorkShopModel firebaseModel) {
         Toast.makeText(requireContext(), "Enrolled", Toast.LENGTH_SHORT).show();

@@ -43,7 +43,7 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         String uid = getIntent().getStringExtra("uid");
-        Toast.makeText(this, "" + uid, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "" + uid, Toast.LENGTH_SHORT).show();
 
         hud = KProgressHUD.create(this).setStyle(KProgressHUD.Style.SPIN_INDETERMINATE).setCancellable(false).setAnimationSpeed(2).setBackgroundColor(R.color.black).setDimAmount(0.5f);
 
@@ -53,6 +53,9 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         loadFragment(new FragmentA());
     }
 
+    /**
+     * this function is to navigate to fragments
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;

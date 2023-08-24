@@ -66,6 +66,9 @@ public class FragmentB extends Fragment {
 
     }
 
+    /**
+     *this function will get the list of courses from database
+     */
     void addListFirebaseModel() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference dbref = database.getReference("courses");

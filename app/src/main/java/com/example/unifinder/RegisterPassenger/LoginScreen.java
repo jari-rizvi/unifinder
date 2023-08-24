@@ -96,6 +96,12 @@ public class LoginScreen extends AppCompatActivity {
         hidePassword = findViewById(R.id.hidePassword);
     }
 
+
+    /**
+     *this function will validate each field
+     * if fields are not empty the user will get login via firebase auth and navigate to home screen
+     */
+
     private void Validate() {
         String usermail = email.getText().toString();
         String userpass = password.getText().toString();

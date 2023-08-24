@@ -104,6 +104,11 @@ public class SignupActivity extends AppCompatActivity {
         cnfrmhidePassword = findViewById(R.id.hidePasswordConfirm);
     }
 
+
+    /**
+     *this function will validate each field
+     * if fields are not empty the user will register and also will create instance of user in fcm database and navigate to home screen
+     */
     private void Validate() {
         String usermail = email.getText().toString();
         String userpass = newPass.getText().toString();
